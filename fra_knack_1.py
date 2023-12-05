@@ -177,12 +177,14 @@ telegram_converted = convert_message_to_alphabet_indices(telegram)
 
 # Skapa en trädstruktur för att representera alla sätt två siffror kan tolkas, tillskriv en bokstav 
 # till den bokstavskoden, och sedan traversera trädet för att finna kandidatord. 
-# Valfritt: Filtrera med en ordlista av vanliga svenska ord. 
+# Utan att veta hur långa klartextorden är så är alla kandidatord initialt lika giltig, och filtrering (antingen maskinell eller manuell)
+# bör göras. Filtrering kan göras både baserat på endast svenska ord, samt korrespondensens förmodade kontext.
 
 # I detta fall har filtrering ej varit nödvändig, då orden i meddelandets klartext synts i print-output, 
 # men om filtrering ska implementeras bör s.k. 'fuzzy filtering' användas för att hantera sammansatta ord
 # och ord som är del av andra ord (t.ex. att ordet 'graf' återfinns i 'kryptografi').
 
+# Valfritt: Filtrera med en ordlista av vanliga svenska ord.
 decipher(telegram_converted, filter_with_wordlist=False)
 
 # Efter manuell inspektion av möjliga kandidatord, samt givet att telegrammets sammanhang
